@@ -1,12 +1,10 @@
 const { DateTime } = require("luxon");
 
 module.exports = function (eleventyConfig) {
-  // existing date filter
   eleventyConfig.addFilter("date", (value, format = "yyyy") => {
     return DateTime.fromJSDate(new Date(value)).toFormat(format);
   });
 
-  // new time range formatter
   eleventyConfig.addFilter("formatTimeRange", (timeRange) => {
     if (!timeRange || !timeRange.includes("–")) return timeRange;
 
@@ -16,6 +14,11 @@ module.exports = function (eleventyConfig) {
       DateTime.fromFormat(t, "HH:mm").toFormat("h:mma").toLowerCase();
 
     return `${formatTime(start)} – ${formatTime(end)}`;
+  });
+
+  // ✅ This makes `collections.events` available
+  eleventyConfig.addCollection("events", function (collection) {
+    return collection.getFilteredByGlob("event-pages/*.md");
   });
 
   return {
