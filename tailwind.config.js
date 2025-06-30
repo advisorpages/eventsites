@@ -1,7 +1,8 @@
 module.exports = {
   content: [
-    "./**/*.njk",
-    "./**/*.md"
+    "./docs/**/*.html",
+    "./event-pages/**/*.md",
+    "./_includes/**/*.njk"
   ],
   theme: {
     extend: {},
