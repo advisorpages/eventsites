@@ -2,34 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Women in Wealth Summit</title>
-    <link href="/styles/event.css" rel="stylesheet" />
+    <title>Freedom Workshop</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   </head>
   <body>
     <section class="text-center py-10">
-  <h1 class="text-3xl font-bold">Learn From Canada&#39;s Top Female Financial Coaches</h1>
-  <p class="text-lg mt-2">Live Event – One Day Only!</p>
+  <h1 class="text-3xl font-bold">Freedom Workshop</h1>
+  <p class="text-lg mt-2"></p>
   <p class="mt-4 font-semibold">
-    📅 2024-07-10 &nbsp;&nbsp; ⏰ 6:00pm – 8:30pm &nbsp;&nbsp; 📍 8531 Financial Centre
+    📅 2024-07-13 &nbsp;&nbsp; ⏰ 10:00am – 11:30am &nbsp;&nbsp; 📍 8531 Financial Centre
   </p>
 </section>
 
     
-<section class="text-center py-8">
-  <img src="/assets/speakers/samantha.jpg" alt="Samantha Roy" class="mx-auto rounded-full w-32 h-32 mb-4" />
-  <h2 class="text-xl font-bold">Samantha Roy</h2>
-  <p>VP of Strategic Growth — $100M+ in client assets advised</p>
-</section>
-
-
     <section class="py-6 px-4">
   <ul class="list-disc list-inside max-w-xl mx-auto">
     
-      <li class="text-lg mb-2">Real-world insights from top female leaders</li>
+      <li class="text-lg mb-2">Create your financial freedom plan</li>
     
-      <li class="text-lg mb-2">Live Q&amp;A</li>
+      <li class="text-lg mb-2">Learn how to stop living paycheck to paycheck</li>
     
-      <li class="text-lg mb-2">Free workbook included</li>
+      <li class="text-lg mb-2">Build passive income the smart way</li>
     
   </ul>
 </section>
@@ -40,7 +33,7 @@
     <input name="full_name" placeholder="Full Name" required class="w-full border rounded px-4 py-2" />
     <input name="email" type="email" placeholder="Email Address" required class="w-full border rounded px-4 py-2" />
     <input name="phone" placeholder="Phone Number" class="w-full border rounded px-4 py-2" />
-    <input type="hidden" name="event_id" value="example-schedule-123">
+    <input type="hidden" name="event_id" value="sch-001">
     <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
       Register Now
     </button>
@@ -53,7 +46,7 @@ document.getElementById("registrationForm").addEventListener("submit", async fun
   e.preventDefault();
   const data = Object.fromEntries(new FormData(this).entries());
 
-  const webhookURL = "https://your-webhook-endpoint.com/webhook/register"; // Replace with your actual webhook
+  const webhookURL = "https://your-webhook-endpoint.com/webhook/register";
 
   try {
     const res = await fetch(webhookURL, {
@@ -77,9 +70,7 @@ document.getElementById("registrationForm").addEventListener("submit", async fun
     <section class="py-6 text-center">
   <div class="flex justify-center gap-6 flex-wrap">
     
-      <img src="/assets/partners/brand1.png" alt="Partner" class="h-10" />
-    
-      <img src="/assets/partners/brand2.png" alt="Partner" class="h-10" />
+      <img src="/assets/partners/logo1.png" alt="Partner" class="h-10" />
     
   </div>
 </section>
@@ -87,6 +78,5 @@ document.getElementById("registrationForm").addEventListener("submit", async fun
     <footer class="text-center py-4 text-sm text-gray-500">
   <p>&copy; {{ new Date().getFullYear() }} Advisor Pages. All rights reserved.</p>
 </footer>
-
   </body>
 </html>
