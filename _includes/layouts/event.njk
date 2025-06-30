@@ -15,14 +15,18 @@
         <h1 class="text-4xl font-extrabold text-gray-900">{{ title }}</h1>
         <p class="text-lg text-gray-700">{{ subheading }}</p>
 
-        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 mt-4">
-          <div class="flex items-center gap-2">
-            🗓️ <span>📅 {{ date | date("cccc, LLLL d") }}</span>
-          </div>
-          <div class="flex items-center gap-2">
-            ⏰ <span>{{ time }}</span>
-          </div>
-        </div>
+        <div class="space-y-2 text-sm text-gray-600 mt-4">
+  <div class="flex items-center gap-2">
+    🗓️ <span>{{ date | date("cccc, LLLL d") }}</span>
+  </div>
+  <div class="flex items-center gap-2">
+    ⏰ <span>{{ time }}</span>
+  </div>
+  <div class="flex items-center gap-2">
+    📍 <span>{{ event_location }}</span>
+  </div>
+</div>
+
 
         <div class="text-sm text-gray-600">
           📍 <span>{{ event_location }}</span>
