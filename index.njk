@@ -6,8 +6,9 @@ title: "Upcoming Events"
 <h1>Upcoming Events</h1>
 
 <ul>
-  {% set events = require('_data/events.json') %}
   {% for event in events %}
-    <li><a href="/eventsites{{ event.path }}">{{ event.title }}</a></li>
+    <li>
+      <a href="/eventsites{{ event.path }}">{{ event.title }}</a>
+    </li>
   {% endfor %}
 </ul>
