@@ -15,17 +15,21 @@
         <h1 class="text-4xl font-extrabold text-gray-900">{{ title }}</h1>
         <p class="text-lg text-gray-700">{{ subheading }}</p>
 
-        <div class="space-y-2 text-sm text-gray-600 mt-4">
+        <div class="mt-6 space-y-2 text-sm text-gray-700">
   <div class="flex items-center gap-2">
-    🗓️ <span>{{ date | date("cccc, LLLL d") }}</span>
+    <span class="text-xl">📅</span>
+    <span>{{ date | date("cccc, LLLL d") }}</span>
   </div>
   <div class="flex items-center gap-2">
-    ⏰ <span>{{ time }}</span>
+    <span class="text-xl">⏰</span>
+    <span>{{ time }}</span>
   </div>
   <div class="flex items-center gap-2">
-    📍 <span>{{ event_location }}</span>
+    <span class="text-xl">📍</span>
+    <span>{{ event_location }}</span>
   </div>
 </div>
+
 
 
         <div class="text-sm text-gray-600">
