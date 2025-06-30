@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Financial Freedom Workshop</title>
+    <link href="/styles/event.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section class="text-center py-10">
+  <h1 class="text-3xl font-bold">Build Your 5-Year Freedom Plan</h1>
+  <p class="text-lg mt-2">Free live workshop for working families</p>
+  <p class="mt-4 font-semibold">
+    📅 2024-07-13 &nbsp;&nbsp; ⏰ 11:00am – 12:30pm &nbsp;&nbsp; 📍 8531 Financial Centre
+  </p>
+</section>
+
+    <section class="py-6 px-4">
+  <ul class="list-disc list-inside max-w-xl mx-auto">
+    
+      <li class="text-lg mb-2">Discover your financial freedom number</li>
+    
+      <li class="text-lg mb-2">Avoid the 3 biggest wealth traps</li>
+    
+      <li class="text-lg mb-2">Learn the blueprint used by 1000+ clients</li>
+    
+  </ul>
+</section>
+
+    <section class="bg-white shadow-lg rounded-lg p-6 max-w-md mx-auto my-10">
+  <h3 class="text-xl font-bold mb-4 text-center">Reserve Your Spot</h3>
+  <form id="registrationForm" class="space-y-4">
+    <input name="full_name" placeholder="Full Name" required class="w-full border rounded px-4 py-2" />
+    <input name="email" type="email" placeholder="Email Address" required class="w-full border rounded px-4 py-2" />
+    <input name="phone" placeholder="Phone Number" class="w-full border rounded px-4 py-2" />
+    <input type="hidden" name="event_id" value="example-schedule-456">
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+      Register Now
+    </button>
+  </form>
+  <p id="formSuccess" class="hidden text-green-600 mt-4 text-center">✅ You're registered!</p>
+</section>
+
+<script>
+document.getElementById("registrationForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(this).entries());
+
+  const webhookURL = "https://your-webhook-endpoint.com/webhook/register"; // Replace with your actual webhook
+
+  try {
+    const res = await fetch(webhookURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      this.reset();
+      document.getElementById("formSuccess").classList.remove("hidden");
+    } else {
+      alert("❌ Something went wrong.");
+    }
+  } catch (err) {
+    alert("❌ Could not submit form.");
+  }
+});
+</script>
+
+    <section class="py-6 text-center">
+  <div class="flex justify-center gap-6 flex-wrap">
+    
+      <img src="/assets/partners/yourteam.png" alt="Partner" class="h-10" />
+    
+  </div>
+</section>
+
+    <footer class="text-center py-4 text-sm text-gray-500">
+  <p>&copy; {{ new Date().getFullYear() }} Advisor Pages. All rights reserved.</p>
+</footer>
+
+  </body>
+</html>
