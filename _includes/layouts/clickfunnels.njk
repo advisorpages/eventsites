@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/styles/tailwind.css" rel="stylesheet">
+  </head>
+  <body class="bg-white text-gray-900">
+    <main class="max-w-4xl mx-auto px-4 py-12">
+      <h1 class="text-4xl font-bold mb-4">{{ hero_heading }}</h1>
+      <p class="text-lg mb-8">{{ subheading }}</p>
+
+      <div class="mb-4">
+        <strong>Date:</strong> {{ date }}<br>
+        <strong>Time:</strong> {{ time }}<br>
+        <strong>Location:</strong> {{ event_location }}
+      </div>
+
+      <div class="prose mb-8">
+        {{ body }}
+      </div>
+
+      <ul class="list-disc ml-6 mb-8">
+        {% for item in features %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+
+      <form class="bg-gray-100 p-6 rounded" name="registration" method="POST" data-netlify="true">
+        <input type="hidden" name="event" value="{{ title }}" />
+        <p class="mb-2 font-semibold">Register Now</p>
+        <input class="block w-full p-2 mb-2 border" type="text" name="name" placeholder="Your Name" required />
+        <input class="block w-full p-2 mb-2 border" type="email" name="email" placeholder="Your Email" required />
+        <button class="bg-blue-600 text-white px-4 py-2 rounded" type="submit">Submit</button>
+      </form>
+    </main>
+  </body>
+</html>
