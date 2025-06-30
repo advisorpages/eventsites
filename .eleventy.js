@@ -1,10 +1,16 @@
+const { DateTime } = require("luxon");
+
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter("date", (value, format = "yyyy") => {
+    return DateTime.fromJSDate(new Date(value)).toFormat(format);
+  });
+
   return {
     dir: {
-      input: ".",
-      includes: "_includes",
-      data: "_data",
-      output: "docs" // 👈 this must match your publish_dir
+      input: ".",              // keep as-is
+      includes: "_includes",   // keep as-is
+      data: "_data",           // keep as-is
+      output: "docs"           // 👈 matches your publish_dir
     }
   };
 };
