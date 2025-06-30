@@ -1,5 +1,5 @@
 ---
-layout: layouts/clickfunnels.njk
+layout: layouts/event.njk
 title: "Super Saturday: Celebrate Success, Build Momentum"
 subheading: "Join us in person this Saturday, July 19th from 10 AM to 1 PM at the Acadia Office for 'Super Saturday' — a powerful event designed to celebrate wins, inspire growth, and motivate your next big move"
 date: "2025-07-19"
