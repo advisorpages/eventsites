@@ -1,91 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Super Saturday: Celebrate Success, Build Momentum</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/eventsites/assets/style.css" />
-</head>
-<body class="bg-white text-gray-800 font-sans">
-  <main class="max-w-6xl mx-auto px-6 py-10">
-    <!-- Hero Section -->
-    <section class="flex flex-col lg:flex-row gap-10 items-start">
-      <div class="flex-1 space-y-6">
-        <p class="uppercase tracking-widest text-sm text-gray-600">Live Expert Panel and Q&amp;A</p>
-        <h1 class="text-4xl font-extrabold text-gray-900">Super Saturday: Celebrate Success, Build Momentum</h1>
-        <p class="text-lg text-gray-700">Join us in person this Saturday, July 19th from 10 AM to 1 PM at the Acadia Office for &#39;Super Saturday&#39; — a powerful event designed to celebrate wins, inspire growth, and motivate your next big move</p>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Super Saturday: Celebrate Success, Build Momentum</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <section class="text-center py-10">
+  <h1 class="text-3xl font-bold">Super Saturday: Celebrate Success, Build Momentum</h1>
+  <p class="text-lg mt-2">Join us in person this Saturday, July 19th from 10 AM to 1 PM at the Acadia Office for &#39;Super Saturday&#39; — a powerful event designed to celebrate wins, inspire g</p>
+  <p class="mt-4 font-semibold">
+    📅 2025-07-19 &nbsp;&nbsp; ⏰ 10:00 – 13:00 &nbsp;&nbsp; 📍 Acadia Office
+  </p>
+</section>
 
-        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 mt-4">
-          <div class="flex items-center gap-2">
-            🗓️ <span></span>
-          </div>
-          <div class="flex items-center gap-2">
-            ⏰ <span> – </span>
-          </div>
-        </div>
-
-        <div class="text-sm text-gray-600">
-          📍 <span></span>
-        </div>
-
-        <!-- Guest Speaker Summary -->
-        
-      </div>
-
-      <!-- Registration Form -->
-      <aside class="bg-black text-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <p class="text-sm text-pink-300 uppercase mb-2">Event begins in</p>
-        <h2 class="text-xl font-bold text-white mb-4">Soon!</h2>
-        
-        <form action="#" method="POST" class="space-y-4">
-          <input name="first_name" placeholder="First Name" required class="w-full p-2 rounded text-black" />
-          <input name="last_name" placeholder="Last Name" required class="w-full p-2 rounded text-black" />
-          <input name="email" type="email" placeholder="Email" required class="w-full p-2 rounded text-black" />
-          <input name="phone" placeholder="Phone Number" class="w-full p-2 rounded text-black" />
-          <button type="submit" class="bg-pink-500 hover:bg-pink-600 w-full py-3 rounded text-white font-semibold">Reserve My Spot</button>
-        </form>
-        
-      </aside>
-    </section>
-
-    <!-- Speaker Profiles -->
     
-
-    <!-- Extended Description -->
-    <section class="mt-12">
-      <h2 class="text-2xl font-bold mb-4">A conversation with leading experts</h2>
-      <div class="text-gray-700 space-y-4">
-        Join us in person this Saturday, July 19th from 10 AM to 1 PM at the Acadia Office for 'Super Saturday' — a powerful event designed to celebrate wins, inspire growth, and motivate your next big move. Whether you're a client, teammate, or guest, this event is packed with energy, recognition, and strategy. Learn why building a business with us is worth it, and leave with the confidence and belief to push forward in your journey.
-
-      </div>
-    </section>
-
-    <!-- Topics List -->
+    <section class="py-6 px-4">
+  <ul class="list-disc list-inside max-w-xl mx-auto">
     
-    <section class="mt-8">
-      <h3 class="text-xl font-semibold mb-2">The Panel and Q&A will explore such topics as:</h3>
-      <ul class="list-disc pl-5 space-y-1 text-gray-700">
-        
-        <li>Join us in person this Saturday, July 19th from 10 AM to 1 PM at the Acadia Office for &#39;Super Saturday&#39; — a powerful event designed to celebrate wins, inspire growth, and motivate your next big move</li>
-        
-        <li>Live training, recognition, and belief-building.</li>
-        
-        <li>Register Now and bring someone who needs to see what’s possible!</li>
-        
-      </ul>
-    </section>
+      <li class="text-lg mb-2">Join us in person this Saturday, July 19th from 10 AM to 1 PM at the Acadia Office for &#39;Super Saturday&#39; — a powerful event designed to celebrate wins, inspire growth, and motivate your next big move. Whether you&#39;re a client, teammate, or guest, this event is packed with energy, recognition, and strategy. Learn why building a business with us is worth it, and leave with the confidence and belief to push forward in your journey.</li>
     
+      <li class="text-lg mb-2">Live training, recognition, and belief-building.</li>
+    
+      <li class="text-lg mb-2">Register Now and bring someone who needs to see what’s possible!</li>
+    
+  </ul>
+</section>
 
-    <!-- CTA Footer -->
-    <section class="text-center mt-12">
-      <a href="#register" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded">
-        Reserve My Seat
-      </a>
-    </section>
-  </main>
+    <section class="bg-white shadow-lg rounded-lg p-6 max-w-md mx-auto my-10">
+  <h3 class="text-xl font-bold mb-4 text-center">Reserve Your Spot</h3>
+  <form id="registrationForm" class="space-y-4">
+    <input name="full_name" placeholder="Full Name" required class="w-full border rounded px-4 py-2" />
+    <input name="email" type="email" placeholder="Email Address" required class="w-full border rounded px-4 py-2" />
+    <input name="phone" placeholder="Phone Number" class="w-full border rounded px-4 py-2" />
+    <input type="hidden" name="event_id" value="c82d581c-ceb8-4b24-8a00-09bd12c267ea">
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+      Register Now
+    </button>
+  </form>
+  <p id="formSuccess" class="hidden text-green-600 mt-4 text-center">✅ You're registered!</p>
+</section>
 
-  <footer class="text-center text-sm text-gray-500 mt-16 py-6 border-t">
-    Copyright © Invalid DateTime, Your Organization.
-  </footer>
-</body>
+<script>
+document.getElementById("registrationForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(this).entries());
+
+  const webhookURL = "https://your-webhook-endpoint.com/webhook/register";
+
+  try {
+    const res = await fetch(webhookURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      this.reset();
+      document.getElementById("formSuccess").classList.remove("hidden");
+    } else {
+      alert("❌ Something went wrong.");
+    }
+  } catch (err) {
+    alert("❌ Could not submit form.");
+  }
+});
+</script>
+
+    <section class="py-6 text-center">
+  <div class="flex justify-center gap-6 flex-wrap">
+    
+  </div>
+</section>
+
+    <footer class="text-center py-4 text-sm text-gray-500">
+  <p>&copy; {{ new Date().getFullYear() }} Advisor Pages. All rights reserved.</p>
+</footer>
+  </body>
 </html>
