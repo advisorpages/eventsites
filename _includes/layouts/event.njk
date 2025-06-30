@@ -29,6 +29,14 @@
   </div>
 </div>
 
+ <!-- Extended Description -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold mb-4">About This Event</h2>
+      <div class="text-gray-700 space-y-4">
+        {{ description | safe }}
+      </div>
+    </section>
+
         <!-- Guest Speaker Summary -->
         {% if guest_name %}
         <div class="mt-6">
@@ -70,14 +78,6 @@
       {% endfor %}
     </section>
     {% endif %}
-
-    <!-- Extended Description -->
-    <section class="mt-12">
-      <h2 class="text-2xl font-bold mb-4">About This Event</h2>
-      <div class="text-gray-700 space-y-4">
-        {{ description | safe }}
-      </div>
-    </section>
 
     <!-- Topics List -->
     {% if features %}
