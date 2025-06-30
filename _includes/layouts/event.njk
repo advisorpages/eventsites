@@ -8,36 +8,38 @@
 </head>
 <body class="bg-white text-gray-800 font-sans">
   <main class="max-w-6xl mx-auto px-6 py-10">
+
     <!-- Hero Section -->
     <section class="flex flex-col lg:flex-row gap-10 items-start">
       <div class="flex-1 space-y-6">
         <p class="uppercase tracking-widest text-sm text-gray-600">{{ category }}</p>
         <h1 class="text-4xl font-extrabold text-gray-900">{{ title }}</h1>
-        
-        <div class="bg-white text-gray-800 font-sans">
-  <div class="flex items-center gap-2">
-    <span class="text-2xl">📅</span>
-    <span>{{ date | date("cccc, LLLL d") }}</span>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-2xl">⏰</span>
-    <span>{{ time | formatTimeRange }}</span>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="text-2xl">📍</span>
-    <span>{{ event_location }}</span>
-  </div>
-</div>
 
- <!-- Extended Description -->
-    <section class="mt-12">
-      <h2 class="text-2xl font-bold mb-4">About This Event</h2>
-      <div class="text-gray-700 space-y-4">
-        {{ description | safe }}
-      </div>
-    </section>
+        <!-- Date / Time / Location -->
+        <div class="space-y-2 text-lg text-gray-700">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">📅</span>
+            <span>{{ date | date("cccc, LLLL d") }}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">⏰</span>
+            <span>{{ time | formatTimeRange }}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">📍</span>
+            <span>{{ event_location }}</span>
+          </div>
+        </div>
 
-        <!-- Guest Speaker Summary -->
+        <!-- Description -->
+        <section class="mt-12">
+          <h2 class="text-2xl font-bold mb-4">About This Event</h2>
+          <div class="text-gray-700 space-y-4">
+            {{ description | safe }}
+          </div>
+        </section>
+
+        <!-- Guest Speaker -->
         {% if guest_name %}
         <div class="mt-6">
           <h2 class="text-xl font-semibold text-gray-800">Featuring:</h2>
@@ -49,9 +51,12 @@
       </div>
 
       <!-- Registration Form -->
-      <aside class="bg-black text-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <p class="text-sm text-pink-300 uppercase mb-2">{{ date | date("cccc, LLLL d") }} | {{ time | formatTimeRange }}</p>
-        <h2 class="text-xl font-bold text-white mb-4">{{ cta }}</h2>
+      <aside id="register" class="bg-black text-white p-6 rounded-lg shadow-md w-full max-w-md">
+        <p class="text-sm text-pink-300 uppercase mb-2">
+          {{ date | date("cccc, LLLL d") }} | {{ time | formatTimeRange }}
+        </p>
+        <h2 class="text-xl font-bold mb-4">{{ cta }}</h2>
+
         {% if registration_iframe %}
           <iframe src="{{ registration_iframe }}" frameborder="0" class="w-full h-[480px]"></iframe>
         {% else %}
@@ -60,13 +65,24 @@
           <input name="last_name" placeholder="Last Name" required class="w-full p-2 rounded text-black" />
           <input name="email" type="email" placeholder="Email" required class="w-full p-2 rounded text-black" />
           <input name="phone" placeholder="Phone Number" class="w-full p-2 rounded text-black" />
-          <button type="submit" class="bg-pink-500 hover:bg-pink-600 w-full py-3 rounded text-white font-semibold">Reserve My Spot</button>
+          <input name="referred_by" placeholder="Referred by (optional)" class="w-full p-2 rounded text-black" />
+
+          <!-- Honeypot Field -->
+          <div style="display: none;">
+            <label>Leave this field empty:
+              <input name="website" type="text" />
+            </label>
+          </div>
+
+          <button type="submit" class="bg-pink-500 hover:bg-pink-600 w-full py-3 rounded text-white font-semibold">
+            Reserve My Spot
+          </button>
         </form>
         {% endif %}
       </aside>
     </section>
 
-    <!-- Speaker Profiles -->
+    <!-- Speakers -->
     {% if speakers %}
     <section class="grid md:grid-cols-3 gap-6 mt-12">
       {% for speaker in speakers %}
@@ -79,9 +95,9 @@
     </section>
     {% endif %}
 
-    <!-- Topics List -->
+    <!-- Features -->
     {% if features %}
-    <section class="mt-8">
+    <section class="mt-12">
       <h3 class="text-xl font-semibold mb-2">What You'll Walk Away With:</h3>
       <ul class="list-disc pl-5 space-y-1 text-gray-700">
         {% for feature in features %}
@@ -91,16 +107,17 @@
     </section>
     {% endif %}
 
-    <!-- CTA Footer -->
+    <!-- CTA Button Footer -->
     <section class="text-center mt-12">
       <a href="#register" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded">
         {{ cta or "Reserve My Seat" }}
       </a>
     </section>
+
   </main>
 
   <footer class="text-center text-sm text-gray-500 mt-16 py-6 border-t">
-    Copyright © {{ "now" | date("YYYY") }}, Your Organization.
+    Copyright © {{ "now" | date("yyyy") }}, Your Organization.
   </footer>
 </body>
 </html>
