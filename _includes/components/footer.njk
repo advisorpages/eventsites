@@ -1,3 +1,3 @@
 <footer class="text-center py-4 text-sm text-gray-500">
-  <p>&copy; {{ "now" | date: "%Y" }} Advisor Pages. All rights reserved.</p>
+  <p>&copy; {{ collections.all | eleventyNavigation | length ? (new Date()).getFullYear() : '2024' }} Advisor Pages. All rights reserved.</p>
 </footer>
