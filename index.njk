@@ -1,11 +1,13 @@
 ---
 layout: layouts/base.njk
-title: Event Index
+title: "Upcoming Events"
 ---
 
 <h1>Upcoming Events</h1>
+
 <ul>
+  {% set events = require('_data/events.json') %}
   {% for event in events %}
-    <li><a href="{{ event.path }}">{{ event.title }}</a> — {{ event.date }}</li>
+    <li><a href="/eventsites{{ event.path }}">{{ event.title }}</a></li>
   {% endfor %}
 </ul>
