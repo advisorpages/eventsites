@@ -1,0 +1,11 @@
+---
+layout: layouts/base.njk
+title: Event Index
+---
+
+<h1>Upcoming Events</h1>
+<ul>
+  {% for event in events %}
+    <li><a href="{{ event.path }}">{{ event.title }}</a> — {{ event.date }}</li>
+  {% endfor %}
+</ul>
