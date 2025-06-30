@@ -7,23 +7,31 @@ title: "Upcoming Events"
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
   {% for event in collections.events %}
-    <a href="{{ event.url | replace('/index.html', '/') }}" class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+    <a href="/eventsites{{ event.url | replace('/index.html', '/') }}"
+       class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+      
       <h2 class="text-xl font-semibold text-blue-800 mb-1">
         {{ event.data.title }}
       </h2>
-      <p class="text-sm text-gray-600">
-        📅 {{ event.data.date | date("cccc, LLLL d") }}
-      </p>
+
+      {% if event.data.date %}
+        <p class="text-sm text-gray-600">
+          📅 {{ event.data.date | date("cccc, LLLL d") }}
+        </p>
+      {% endif %}
+
       {% if event.data.event_location %}
-      <p class="text-sm text-gray-600">
-        📍 {{ event.data.event_location }}
-      </p>
+        <p class="text-sm text-gray-600">
+          📍 {{ event.data.event_location }}
+        </p>
       {% endif %}
+
       {% if event.data.description %}
-      <p class="text-sm text-gray-500 mt-2 line-clamp-3">
-        {{ event.data.description }}
-      </p>
+        <p class="text-sm text-gray-500 mt-2 line-clamp-3">
+          {{ event.data.description }}
+        </p>
       {% endif %}
+      
     </a>
   {% endfor %}
 </div>
