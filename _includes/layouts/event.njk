@@ -15,7 +15,7 @@
         <h1 class="text-4xl font-extrabold text-gray-900">{{ title }}</h1>
         <p class="text-lg text-gray-700">{{ subheading }}</p>
 
-        <div class="mt-6 space-y-2 text-sm text-gray-700">
+        <div class="bg-white text-gray-800 font-sans">
   <div class="flex items-center gap-2">
     <span class="text-xl">📅</span>
     <span>{{ date | date("cccc, LLLL d") }}</span>
@@ -29,12 +29,6 @@
     <span>{{ event_location }}</span>
   </div>
 </div>
-
-
-
-        <div class="text-sm text-gray-600">
-          📍 <span>{{ event_location }}</span>
-        </div>
 
         <!-- Guest Speaker Summary -->
         {% if guest_name %}
