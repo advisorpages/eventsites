@@ -1,4 +1,4 @@
-name: Deploy Eleventy to GitHub Pages
+name: Deploy Eleventy with TailwindCSS to GitHub Pages
 
 on:
   push:
@@ -20,8 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Eleventy site
-        run: npx eleventy
+      - name: Build Tailwind and Eleventy site
+        run: npm run build
 
       - name: Deploy to GitHub Pages (docs folder)
         uses: peaceiris/actions-gh-pages@v3
