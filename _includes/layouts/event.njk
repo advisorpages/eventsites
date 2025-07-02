@@ -129,40 +129,44 @@
   </footer>
 
   <script>
-    document.getElementById("register-form")?.addEventListener("submit", async function (e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = {
-        name: form.first_name.value + " " + form.last_name.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        referred_by: form.referred_by.value,
-        event_name: form.event_name.value,
-        schedule_id: form.schedule_id.value,
-      };
+  document.getElementById("register-form")?.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = {
+      name: form.first_name.value + " " + form.last_name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      referred_by: form.referred_by.value,
+      event_name: form.event_name.value,
+      schedule_id: form.schedule_id.value,
+    };
 
-      if (form.website?.value) return; // Honeypot
+    if (form.website?.value) return; // Honeypot
 
-      try {
-        const res = await fetch("https://n8n.advisorpages.ca/webhook/register-event", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
+    try {
+      const res = await fetch("https://n8n.advisorpages.ca/webhook/register-event", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": "JW7EvaRYNgAy"
+        },
+        body: JSON.stringify(data)
+      });
 
-        if (res.ok) {
-          form.reset();
-          const banner = document.getElementById("success-banner");
-          banner.classList.remove("hidden");
-          setTimeout(() => banner.classList.add("hidden"), 5000);
-        } else {
-          alert("Oops! Something went wrong.");
-        }
-      } catch (err) {
-        console.error(err);
-        alert("Submission failed.");
+      if (res.ok) {
+        form.reset();
+        const banner = document.getElementById("success-banner");
+        banner.classList.remove("hidden");
+        setTimeout(() => banner.classList.add("hidden"), 5000);
+      } else {
+        alert("Oops! Something went wrong.");
       }
-    });
-  </script>
+    } catch (err) {
+      console.error(err);
+      alert("Submission failed.");
+    }
+  });
+</script>
+
 </body>
 </html>
