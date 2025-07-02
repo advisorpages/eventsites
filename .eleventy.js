@@ -21,8 +21,10 @@ module.exports = function (eleventyConfig) {
     return "https://calendar.8531.ca" + path;
   });
 
-  eleventyConfig.addCollection("events", function (collection) {
-    return collection.getFilteredByGlob("event-pages/*.md");
+  eleventyConfig.addCollection("events", function (collectionApi) {
+    const events = collectionApi.getFilteredByGlob("event-pages/*.md");
+    console.log("📦 Loaded event files:", events.map(e => e.inputPath));
+    return events;
   });
 
   return {
