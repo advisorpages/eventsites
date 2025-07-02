@@ -8,6 +8,7 @@
 </head>
 <body class="bg-white text-gray-800 font-sans">
   <main class="max-w-6xl mx-auto px-6 py-10">
+    {% set themeColor = title | randomColor %}
 
     <!-- Hero Section -->
     <section class="flex flex-col lg:flex-row gap-10 items-start">
@@ -39,7 +40,6 @@
           </div>
         </section>
 
-        <!-- Guest Speaker -->
         {% if guest_name %}
         <div class="mt-6">
           <h2 class="text-xl font-semibold text-gray-800">Featuring:</h2>
@@ -52,12 +52,11 @@
 
       <!-- Registration Form -->
       <aside id="register" class="bg-black text-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <p class="text-sm text-pink-300 uppercase mb-2">
+        <p class="text-sm text-{{ themeColor }} uppercase mb-2">
           {{ date | date("cccc, LLLL d") }} | {{ time | formatTimeRange }}
         </p>
         <h2 class="text-xl font-bold mb-4">{{ cta }}</h2>
 
-        <!-- ✅ Success banner -->
         <div id="success-banner" class="hidden bg-green-600 text-white p-4 rounded mb-4">
           🎉 You're registered! Check your email for confirmation.
         </div>
@@ -75,14 +74,13 @@
           <input type="hidden" name="event_name" value="{{ title }}" />
           <input type="hidden" name="schedule_id" value="{{ schedule_id }}" />
 
-          <!-- Honeypot -->
           <div style="display: none;">
             <label>Leave this field empty:
               <input name="website" type="text" />
             </label>
           </div>
 
-          <button type="submit" class="bg-pink-500 hover:bg-pink-600 w-full py-3 rounded text-white font-semibold">
+          <button type="submit" class="bg-{{ themeColor }} hover:opacity-90 w-full py-3 rounded text-white font-semibold">
             Reserve My Spot
           </button>
         </form>
@@ -90,7 +88,6 @@
       </aside>
     </section>
 
-    <!-- Speakers -->
     {% if speakers %}
     <section class="grid md:grid-cols-3 gap-6 mt-12">
       {% for speaker in speakers %}
@@ -103,7 +100,6 @@
     </section>
     {% endif %}
 
-    <!-- Features -->
     {% if features %}
     <section class="mt-12">
       <h3 class="text-xl font-semibold mb-2">What You'll Walk Away With:</h3>
@@ -115,46 +111,30 @@
     </section>
     {% endif %}
 
-    <!-- CTA Button Footer -->
     <section class="text-center mt-12">
-      <a href="#register" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded">
+      <a href="#register" class="inline-block bg-{{ themeColor }} hover:opacity-90 text-white font-bold py-3 px-6 rounded">
         {{ cta or "Reserve My Seat" }}
       </a>
     </section>
 
-<section class="mt-12 border-t pt-8 text-center">
-  <h2 class="text-xl font-bold mb-2">📲 Invite Others</h2>
-  <p class="text-gray-600 mb-2">Share this link:</p>
-  <div class="inline-flex items-center gap-2 justify-center">
-    <input
-      id="share-link"
-      type="text"
-      value="https://advisorpages.github.io/eventsites{{ page.url }}"
-      readonly
-      class="border px-3 py-1 rounded w-72 text-sm"
-    />
-    <button onclick="copyLink()" class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-1 rounded text-sm">
-      Copy
-    </button>
-  </div>
-  <p id="copy-msg" class="text-green-600 text-sm mt-2 hidden">✅ Link copied!</p>
-</section>
-
-<script>
-  function copyLink() {
-    const input = document.getElementById("share-link");
-    input.select();
-    input.setSelectionRange(0, 99999); // For mobile
-    document.execCommand("copy");
-    document.getElementById("copy-msg").classList.remove("hidden");
-    setTimeout(() => {
-      document.getElementById("copy-msg").classList.add("hidden");
-    }, 3000);
-  }
-</script>
-
-
-
+    <!-- Invite Others -->
+    <section class="mt-12 border-t pt-8 text-center">
+      <h2 class="text-xl font-bold mb-2">📲 Invite Others</h2>
+      <p class="text-gray-600 mb-2">Share this link:</p>
+      <div class="inline-flex items-center gap-2 justify-center">
+        <input
+          id="share-link"
+          type="text"
+          value="https://advisorpages.github.io/eventsites{{ page.url }}"
+          readonly
+          class="border px-3 py-1 rounded w-72 text-sm"
+        />
+        <button onclick="copyLink()" class="bg-{{ themeColor }} hover:opacity-90 text-white px-4 py-1 rounded text-sm">
+          Copy
+        </button>
+      </div>
+      <p id="copy-msg" class="text-green-600 text-sm mt-2 hidden">✅ Link copied!</p>
+    </section>
   </main>
 
   <footer class="text-center text-sm text-gray-500 mt-16 py-6 border-t">
@@ -162,44 +142,54 @@
   </footer>
 
   <script>
-  document.getElementById("register-form")?.addEventListener("submit", async function (e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = {
-      name: form.first_name.value + " " + form.last_name.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      referred_by: form.referred_by.value,
-      event_name: form.event_name.value,
-      schedule_id: form.schedule_id.value,
-    };
-
-    if (form.website?.value) return; // Honeypot
-
-    try {
-      const res = await fetch("https://n8n.advisorpages.ca/webhook/register-event", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": "JW7EvaRYNgAy"
-        },
-        body: JSON.stringify(data)
-      });
-
-      if (res.ok) {
-        form.reset();
-        const banner = document.getElementById("success-banner");
-        banner.classList.remove("hidden");
-        setTimeout(() => banner.classList.add("hidden"), 5000);
-      } else {
-        alert("Oops! Something went wrong.");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Submission failed.");
+    function copyLink() {
+      const input = document.getElementById("share-link");
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      document.getElementById("copy-msg").classList.remove("hidden");
+      setTimeout(() => {
+        document.getElementById("copy-msg").classList.add("hidden");
+      }, 3000);
     }
-  });
-</script>
 
+    document.getElementById("register-form")?.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.first_name.value + " " + form.last_name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        referred_by: form.referred_by.value,
+        event_name: form.event_name.value,
+        schedule_id: form.schedule_id.value,
+      };
+
+      if (form.website?.value) return;
+
+      try {
+        const res = await fetch("https://n8n.advisorpages.ca/webhook/register-event", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": "JW7EvaRYNgAy"
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          form.reset();
+          const banner = document.getElementById("success-banner");
+          banner.classList.remove("hidden");
+          setTimeout(() => banner.classList.add("hidden"), 5000);
+        } else {
+          alert("Oops! Something went wrong.");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Submission failed.");
+      }
+    });
+  </script>
 </body>
 </html>
