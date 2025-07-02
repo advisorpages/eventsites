@@ -57,17 +57,25 @@
         </p>
         <h2 class="text-xl font-bold mb-4">{{ cta }}</h2>
 
+        <!-- ✅ Success banner -->
+        <div id="success-banner" class="hidden bg-green-600 text-white p-4 rounded mb-4">
+          🎉 You're registered! Check your email for confirmation.
+        </div>
+
         {% if registration_iframe %}
           <iframe src="{{ registration_iframe }}" frameborder="0" class="w-full h-[480px]"></iframe>
         {% else %}
-        <form action="{{ webhook_url or '#' }}" method="POST" class="space-y-4">
+        <form id="register-form" class="space-y-4">
           <input name="first_name" placeholder="First Name" required class="w-full p-2 rounded text-black" />
           <input name="last_name" placeholder="Last Name" required class="w-full p-2 rounded text-black" />
           <input name="email" type="email" placeholder="Email" required class="w-full p-2 rounded text-black" />
           <input name="phone" placeholder="Phone Number" class="w-full p-2 rounded text-black" />
           <input name="referred_by" placeholder="Referred by (optional)" class="w-full p-2 rounded text-black" />
 
-          <!-- Honeypot Field -->
+          <input type="hidden" name="event_name" value="{{ title }}" />
+          <input type="hidden" name="schedule_id" value="{{ schedule_id }}" />
+
+          <!-- Honeypot -->
           <div style="display: none;">
             <label>Leave this field empty:
               <input name="website" type="text" />
@@ -119,5 +127,42 @@
   <footer class="text-center text-sm text-gray-500 mt-16 py-6 border-t">
     Copyright © {{ "now" | date("yyyy") }}, Your Organization.
   </footer>
+
+  <script>
+    document.getElementById("register-form")?.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.first_name.value + " " + form.last_name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        referred_by: form.referred_by.value,
+        event_name: form.event_name.value,
+        schedule_id: form.schedule_id.value,
+      };
+
+      if (form.website?.value) return; // Honeypot
+
+      try {
+        const res = await fetch("https://n8n.advisorpages.ca/webhook/register-event", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          form.reset();
+          const banner = document.getElementById("success-banner");
+          banner.classList.remove("hidden");
+          setTimeout(() => banner.classList.add("hidden"), 5000);
+        } else {
+          alert("Oops! Something went wrong.");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Submission failed.");
+      }
+    });
+  </script>
 </body>
 </html>
