@@ -5,42 +5,46 @@ title: "Upcoming Events"
 
 {% include "nav.njk" %}
 
-<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-  <header class="text-center mb-10">
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-2">🎉 Upcoming Events</h1>
-    <p class="text-gray-600 text-base sm:text-lg">
-      Browse our upcoming trainings, team nights, and incentive events.
+<!-- Hero Banner -->
+<section class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 text-white py-16 mb-12 shadow-inner">
+  <div class="max-w-3xl mx-auto text-center px-4">
+    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">🎉 Upcoming Events</h1>
+    <p class="text-lg sm:text-xl font-medium text-white/90">
+      Find out what's happening and make sure you're plugged into the action.
     </p>
-  </header>
+  </div>
+</section>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+<!-- Event Grid -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
     {% for event in collections.events %}
       <a href="/eventsites{{ event.url | replace('/index.html', '/') }}"
-         class="block bg-white p-5 rounded-lg shadow-sm border hover:shadow-md transition">
+         class="group block p-6 bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-200 hover:border-blue-400">
         
-        <h2 class="text-lg font-semibold text-blue-800 mb-1">
+        <h2 class="text-xl font-semibold text-gray-900 group-hover:text-blue-700">
           {{ event.data.title }}
         </h2>
 
         {% if event.data.date %}
-          <p class="text-sm text-gray-600">📅 {{ event.data.date | date("cccc, LLLL d") }}</p>
+          <p class="text-sm text-gray-600 mt-1">📅 {{ event.data.date | date("cccc, LLLL d") }}</p>
         {% endif %}
 
         {% if event.data.event_location %}
-          <p class="text-sm text-gray-600">📍 {{ event.data.event_location }}</p>
+          <p class="text-sm text-gray-600 mt-1">📍 {{ event.data.event_location }}</p>
         {% endif %}
 
         {% if event.data.description %}
-          <p class="text-sm text-gray-500 mt-2 line-clamp-3">{{ event.data.description }}</p>
+          <p class="text-sm text-gray-500 mt-3 line-clamp-3">{{ event.data.description }}</p>
         {% endif %}
-        
       </a>
     {% endfor %}
   </div>
+</section>
 
-  <footer class="text-center mt-12">
-    <a href="/eventsites/whos-registered/" class="inline-block text-blue-600 hover:text-blue-800 font-medium text-sm border-b border-blue-500">
-      👥 Who’s Registered?
-    </a>
-  </footer>
+<!-- Who's Registered CTA -->
+<section class="text-center mt-16 mb-12">
+  <a href="/eventsites/whos-registered/" class="inline-block text-blue-600 hover:text-blue-800 font-medium text-base border-b border-blue-500">
+    👥 View Who’s Registered
+  </a>
 </section>
