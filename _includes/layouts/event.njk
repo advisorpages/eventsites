@@ -122,18 +122,27 @@
       </a>
     </section>
 
-{% if qr_url and short_url %}
-<section class="mt-16 border-t pt-10 text-center">
+<section class="mt-12 border-t pt-8 text-center">
   <h2 class="text-xl font-bold mb-2">📲 Invite Others</h2>
-  <p class="text-gray-600 text-sm mb-4">Scan or share this link with guests:</p>
-  <div class="flex flex-col items-center gap-4">
-    <img src="{{ qr_url }}" alt="QR Code" class="w-32 h-32" />
-    <a href="{{ short_url }}" class="text-blue-600 underline break-words" target="_blank">
-      {{ short_url }}
-    </a>
+  <p class="text-gray-600 mb-2">Share this link:</p>
+  <div class="inline-flex items-center gap-2 justify-center">
+    <input id="share-link" type="text" value="{{ page.url | url }}" readonly class="border px-3 py-1 rounded w-72 text-sm" />
+    <button onclick="copyLink()" class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-1 rounded text-sm">Copy</button>
   </div>
+  <p id="copy-msg" class="text-green-600 text-sm mt-2 hidden">✅ Link copied!</p>
 </section>
-{% endif %}
+
+<script>
+  function copyLink() {
+    const link = document.getElementById("share-link");
+    link.select();
+    document.execCommand("copy");
+    document.getElementById("copy-msg").classList.remove("hidden");
+    setTimeout(() => {
+      document.getElementById("copy-msg").classList.add("hidden");
+    }, 2000);
+  }
+</script>
 
 
   </main>

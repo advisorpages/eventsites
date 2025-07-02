@@ -16,7 +16,11 @@ module.exports = function (eleventyConfig) {
     return `${formatTime(start)} – ${formatTime(end)}`;
   });
 
-  // ✅ This makes `collections.events` available
+  // ✅ Add this to support {{ page.url | url }}
+  eleventyConfig.addFilter("url", (path) => {
+    return "https://calendar.8531.ca" + path;
+  });
+
   eleventyConfig.addCollection("events", function (collection) {
     return collection.getFilteredByGlob("event-pages/*.md");
   });
