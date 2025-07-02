@@ -49,38 +49,39 @@
     </div>
 
     <!-- Registration Form -->
-    <aside id="register" class="bg-{{ formBgColor }} text-white p-6 rounded-lg shadow-md w-full max-w-md">
-      <p class="text-sm text-{{ themeColor }} uppercase mb-2">
-        {{ date | date("cccc, LLLL d") }} | {{ time | formatTimeRange }}
-      </p>
-      <h2 class="text-xl font-bold mb-4">{{ cta }}</h2>
+<aside id="register" class="bg-{{ formBgColor }} text-white p-6 rounded-lg shadow-md w-full max-w-md">
+  <p class="text-sm text-{{ themeColor }} uppercase mb-2">
+    {{ date | date("cccc, LLLL d") }} | {{ time | formatTimeRange }}
+  </p>
+  <h2 class="text-xl font-bold mb-4">{{ cta }}</h2>
 
-      <div id="success-banner" class="hidden bg-green-600 text-white p-4 rounded mb-4">
-        🎉 You're registered! Check your email for confirmation.
-      </div>
+  <div id="success-banner" class="hidden bg-green-600 text-white p-4 rounded mb-4">
+    🎉 You're registered! Check your email for confirmation.
+  </div>
 
-      {% if registration_iframe %}
-        <iframe src="{{ registration_iframe }}" frameborder="0" class="w-full h-[480px]"></iframe>
-      {% else %}
-      <form id="register-form" class="space-y-4">
-        <input name="first_name" placeholder="First Name" required class="w-full p-2 rounded text-black" />
-        <input name="last_name" placeholder="Last Name" required class="w-full p-2 rounded text-black" />
-        <input name="email" type="email" placeholder="Email" required class="w-full p-2 rounded text-black" />
-        <input name="phone" placeholder="Phone Number" class="w-full p-2 rounded text-black" />
-        <input name="referred_by" placeholder="Referred by (optional)" class="w-full p-2 rounded text-black" />
-        <input type="hidden" name="event_name" value="{{ title }}" />
-        <input type="hidden" name="schedule_id" value="{{ schedule_id }}" />
+  {% if registration_iframe %}
+    <iframe src="{{ registration_iframe }}" frameborder="0" class="w-full h-[480px]"></iframe>
+  {% else %}
+  <form id="register-form" class="space-y-4">
+    <input name="first_name" placeholder="First Name *" required class="w-full p-2 rounded text-black" />
+    <input name="last_name" placeholder="Last Name" class="w-full p-2 rounded text-black" />
+    <input name="email" type="email" placeholder="Email *" required class="w-full p-2 rounded text-black" />
+    <input name="phone" placeholder="Phone Number" class="w-full p-2 rounded text-black" />
+    <input name="referred_by" placeholder="Referred by *" required class="w-full p-2 rounded text-black" />
+    <input type="hidden" name="event_name" value="{{ title }}" />
+    <input type="hidden" name="schedule_id" value="{{ schedule_id }}" />
 
-        <div style="display: none;">
-          <label>Leave this field empty: <input name="website" type="text" /></label>
-        </div>
+    <div style="display: none;">
+      <label>Leave this field empty: <input name="website" type="text" /></label>
+    </div>
 
-        <button type="submit" class="bg-{{ themeColor }} hover:opacity-90 w-full py-3 rounded text-white font-semibold">
-          Reserve My Spot
-        </button>
-      </form>
-      {% endif %}
-    </aside>
+    <button type="submit" class="bg-{{ themeColor }} hover:opacity-90 w-full py-3 rounded text-white font-semibold">
+      Reserve My Spot
+    </button>
+  </form>
+  {% endif %}
+</aside>
+
   </section>
 
   {% if speakers %}
