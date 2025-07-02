@@ -846,6 +846,9 @@ video {
 .hover\:underline:hover {
   text-decoration-line: underline;
 }
+.hover\:opacity-90:hover {
+  opacity: 0.9;
+}
 @media (min-width: 640px) {
 
   .sm\:gap-8 {
