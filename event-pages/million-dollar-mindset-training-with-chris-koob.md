@@ -28,13 +28,13 @@ Learn the mental strategies and leadership principles that drive massive team gr
 ## Call to Action
 Show up early and come ready to absorb what it really takes to level up.
 
-## AIDA
-**Attention:** 
-**Interest:** 
-**Desire:** 
+## AIDA  
+**Attention:**   
+**Interest:**   
+**Desire:**   
 **Action:** 
 
-## PAS
-**Problem:** 
-**Agitate:** 
+## PAS  
+**Problem:**   
+**Agitate:**   
 **Solution:** 
